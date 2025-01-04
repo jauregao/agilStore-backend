@@ -14,12 +14,12 @@ const addNewProduct = async (req:  Request, res: Response) => {
 			nome, qtd_estoque, preco, categoria
 		});
 
-		const novoProduto = await writeFile({
+		const allProducts = await writeFile({
 			id: uuid(),
 			...validatedData,
 		});
 
-		res.status(201).json(novoProduto);
+		res.status(201).json(allProducts);
 		return;
 	} catch (error) {
 		if (error instanceof z.ZodError) {
