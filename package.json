@@ -6,24 +6,23 @@
     "clean": "del /q /s dist",
     "build": "tsc",
     "start-server": "node dist/index.js",
-    "dev": "nodemon --exec ts-node ./src/index.ts"
+    "dev": "nodemon ./src/index.ts"
   },
   "keywords": [],
   "author": "Amanda de Oliveira Pinheiro",
   "license": "ISC",
-  "type": "module",
   "description": "",
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "pg": "^8.13.1",
-    "typescript": "^5.7.2",
     "uuid": "^11.0.3",
     "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
+    "@types/node": "^22.10.5",
     "nodemon": "^3.1.9",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
   }
 }
