@@ -8,11 +8,10 @@ const deleteProduct = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
-
     const products = await readFile();
 
     const product = products.find((p: TProduct) => p.id === id)
-    
+  
     if(!product) {
       res.status(404).json({ message: "Produto não encontrado." });
       return;

@@ -8,7 +8,6 @@ const writeFile = async (productList: TProduct[]) => {
   try {
     const jsonData = JSON.stringify(productList, null, 2);
     await fs.writeFile(jsonFilePath, jsonData, "utf-8");
-    
     return productList;
   } catch (error) {
     console.error("Erro ao ler o arquivo JSON:", error);

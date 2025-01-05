@@ -22,7 +22,6 @@ const validateProductExistence = async (req: Request, res: Response, next: NextF
 
     next();
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error: 'Erro interno do servidor.' });
   }
 };
