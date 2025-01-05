@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { TProduct } from "../types/product";
 import writeFile from "../utils/writeFile";
-import newProduct from "../schemas/newProduct";
+import newProduct from "../schemas/product";
 import { z } from "zod";
 import { v4 as uuid } from 'uuid';
 import readFile from "../utils/readFile";

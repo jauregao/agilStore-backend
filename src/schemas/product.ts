@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const newProduct = z.object({
+const product = z.object({
   nome: z.string({
     required_error: "O nome do produto é um campo obrigatório.",
     invalid_type_error: "O nome do produto precisa ser um texto.",
@@ -30,4 +30,4 @@ const newProduct = z.object({
     .min(10, { message: 'O preço não pode ser menor que 0,10' })
 });
 
-export default newProduct;
+export default product;
