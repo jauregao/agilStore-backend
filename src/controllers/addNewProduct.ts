@@ -4,6 +4,7 @@ import writeFile from "../utils/writeFile";
 import newProduct from "../schemas/newProduct";
 import { z } from "zod";
 import { v4 as uuid } from 'uuid';
+import readFile from "../utils/readFile";
 
 
 const addNewProduct = async (req:  Request, res: Response) => {
@@ -11,15 +12,23 @@ const addNewProduct = async (req:  Request, res: Response) => {
 
   try {
 		const validatedData = newProduct.parse({
-			nome, qtd_estoque, preco, categoria
-		});
+      nome,
+      qtd_estoque,
+      preco,
+      categoria,
+    });
 
-		const allProducts = await writeFile({
-			id: uuid(),
-			...validatedData,
-		});
+		const allProducts: TProduct[] = await readFile();
 
-		res.status(201).json(allProducts);
+		const newProductEntry: TProduct = {
+      id: uuid(),
+      ...validatedData,
+    };
+
+		const updatedProductList = [...allProducts, newProductEntry];
+    await writeFile(updatedProductList);
+
+    res.status(201).json(newProductEntry);
 		return;
 	} catch (error) {
 		if (error instanceof z.ZodError) {
