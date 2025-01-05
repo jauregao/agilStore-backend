@@ -11,11 +11,12 @@ const updateProduct = async (req: Request, res: Response) => {
 
   if(!nome && !categoria && !qtd_estoque && !preco) {
     res.status(400).json({ message: "Pelo menos um campo deve ser enviado para atualização."});
+    return;
   }
 
   try {
     const products: TProduct[] = await readFile();
-
+    
     const validateData = product.partial().parse({
       nome,
       categoria,
