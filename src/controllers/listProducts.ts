@@ -27,7 +27,7 @@ const listProducts = async (req:  Request, res: Response)  => {
             ? a.qtd_estoque - b.qtd_estoque
             : a.preco - b.preco;
 
-        return modo === EMode.ASC ? comparison : EMode.DESC ? -comparison : null;
+        return modo?.toLocaleLowerCase() === EMode.ASC ? comparison : EMode.DESC ? -comparison : null;
       });
     }
 
