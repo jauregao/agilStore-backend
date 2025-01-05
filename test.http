@@ -1,0 +1,40 @@
+###
+# @name listProducts
+GET http://localhost:3000/products
+
+###
+# @name createProduct
+POST http://localhost:3000/product
+Content-Type: application/json
+
+{
+    "nome": "Monitor LG 29'",
+    "categoria": "monitores",
+    "qtd_estoque": 100,
+    "preco": 120000
+}
+
+###
+@productId = {{ createProduct.response.body.id }}
+
+###
+# @name detailProduct
+GET http://localhost:3000/product/{{ productId }}
+
+###
+# @name updateProduct
+PATCH http://localhost:3000/product/{{ productId }}
+Content-Type: application/json
+
+{
+    "nome": "Monitor LG 27'",
+    "categoria": "monitores",
+    "qtd_estoque": 97,
+    "preco": 100000
+}
+
+###
+# @name deleteProduct
+DELETE http://localhost:3000/product/{{ productId }}
+
+
